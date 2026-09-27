@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Appointment - SmartServe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="SmartServe Logo" 
+        style="width: 40px; border-radius: 50%; 
+        object-fit: cover;">
+        Smart<span>Serve</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="my-appointment.html">My Appointment</a>
+    </nav>
+</header>
+
+<section class="booking-section">
+
+    <div class="booking-container">
+
+        <p class="small-title">SMARTSERVE</p>
+
+        <h1>Book Your Appointment</h1>
+
+        <p>
+            Enter your details to schedule your appointment.
+        </p>
+
+        <form onsubmit="bookAppointment(event)">
+
+            <label>Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Mobile Number</label>
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter mobile number"
+                required
+            >
+
+            <label>Appointment Type</label>
+
+            <select id="type" required>
+                <option value="">Select Service</option>
+                <option value="Doctor Appointment">Doctor Appointment</option>
+                <option value="Salon Appointment">Salon Appointment</option>
+                <option value="Bank Appointment">Bank Appointment</option>
+                <option value="Aadhar Centre">Aadhar Centre</option>
+                <option value="Other Service">Other Service</option>
+            </select>
+
+
+            <!-- Doctor Section -->
+
+            <div id="doctorDetails" style="display:none;">
+
+                <label>Select City</label>
+
+                <select id="doctorCity">
+                    <option value="">Select City</option>
+                    <option>Bhopal</option>
+                    <option>Indore</option>
+                    <option>Sehore</option>
+                </select>
+
+                <label>Select Hospital</label>
+
+                <select id="hospital">
+                    <option value="">Select Hospital</option>
+                    <option>City Hospital</option>
+                    <option>Care Hospital</option>
+                    <option>Life Care Hospital</option>
+                </select>
+
+                <label>Select Doctor</label>
+
+                <select id="doctor">
+                    <option value="">Select Doctor</option>
+                    <option>Dr. Rahul Sharma - Cardiologist</option>
+                    <option>Dr. Priya Verma - Physician</option>
+                    <option>Dr. Amit Jain - Dentist</option>
+                </select>
+
+            </div>
+
+
+            <!-- Salon Section -->
+
+            <div id="salonDetails" style="display:none;">
+
+                <label>Select City</label>
+
+                <select id="salonCity">
+                    <option value="">Select City</option>
+                    <option>Bhopal</option>
+                    <option>Indore</option>
+                    <option>Sehore</option>
+                </select>
+
+                <label>Select Salon</label>
+
+                <select id="salon">
+                    <option value="">Select Salon</option>
+                    <option>Style Studio</option>
+                    <option>Glow Salon</option>
+                    <option>Perfect Look</option>
+                </select>
+
+                <label>Select Service</label>
+
+                <select id="salonService">
+                    <option value="">Select Service</option>
+                    <option>Haircut</option>
+                    <option>Hair Spa</option>
+                    <option>Facial</option>
+                    <option>Hair Styling</option>
+                </select>
+
+            </div>
+
+
+            <!-- Bank Section -->
+
+            <div id="bankDetails" style="display:none;">
+
+                <label>Select City</label>
+
+                <select id="bankCity">
+                    <option value="">Select City</option>
+                    <option>Bhopal</option>
+                    <option>Indore</option>
+                    <option>Sehore</option>
+                </select>
+
+                <label>Select Bank</label>
+
+                <select id="bank">
+                    <option value="">Select Bank</option>
+                    <option>State Bank of India</option>
+                    <option>Bank of Baroda</option>
+                    <option>HDFC Bank</option>
+                </select>
+
+                <label>Select Service</label>
+
+                <select id="bankService">
+                    <option value="">Select Service</option>
+                    <option>Account Opening</option>
+                    <option>Cash Deposit</option>
+                    <option>Loan Enquiry</option>
+                    <option>KYC Update</option>
+                </select>
+
+            </div>
+
+
+            <!-- Aadhaar Section -->
+
+            <div id="aadharDetails" style="display:none;">
+
+                <label>Select City</label>
+
+                <select id="aadharCity">
+                    <option value="">Select City</option>
+                    <option>Bhopal</option>
+                    <option>Indore</option>
+                    <option>Sehore</option>
+                </select>
+
+                <label>Select Aadhaar Centre</label>
+
+                <select id="aadharCentre">
+                    <option value="">Select Centre</option>
+                    <option>Aadhaar Seva Kendra - Bhopal</option>
+                    <option>Aadhaar Seva Kendra - Indore</option>
+                    <option>Aadhaar Seva Kendra - Sehore</option>
+                </select>
+
+                <label>Select Service</label>
+
+                <select id="aadharService">
+                    <option value="">Select Service</option>
+                    <option>Aadhaar Update</option>
+                    <option>Mobile Number Update</option>
+                    <option>Address Update</option>
+                    <option>New Aadhaar Enrolment</option>
+                </select>
+
+            </div>
+
+
+            <!-- Other Service -->
+
+            <div id="otherDetails" style="display:none;">
+
+                <label>Select City</label>
+
+                <select id="otherCity">
+                    <option value="">Select City</option>
+                    <option>Bhopal</option>
+                    <option>Indore</option>
+                    <option>Sehore</option>
+                </select>
+
+                <label>Service / Provider Name</label>
+
+                <input
+                    type="text"
+                    id="otherService"
+                    placeholder="Enter service or provider name"
+                >
+
+            </div>
+
+
+            <label>Appointment Date</label>
+
+            <input
+                type="date"
+                id="date"
+                required
+            >
+
+
+            <label>Appointment Time</label>
+
+            <input
+                type="time"
+                id="time"
+                required
+            >
+
+
+            <label>Additional Details</label>
+
+            <textarea
+                id="details"
+                placeholder="Write your requirements..."
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="main-btn full"
+            >
+                Confirm Appointment
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

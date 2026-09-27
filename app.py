@@ -7,6 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+print("MY FOLDER",BASE_DIR)
 
 
 def create_database():
@@ -80,7 +81,7 @@ def get_appointments():
 
     return jsonify([dict(row) for row in appointments])
 
+create_database()
 
 if __name__ == "__main__":
-    create_database()
     app.run(debug=True)

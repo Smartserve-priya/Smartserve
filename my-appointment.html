@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Appointment - SmartServe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            Smart<span>Serve</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="my-appointment.html">My Appointment</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MY APPOINTMENT -->
+    <section class="confirmation">
+
+        <div class="success-box">
+
+            <h1>My Appointment</h1>
+
+            <p>
+                View and manage your appointment details.
+            </p>
+
+            <!-- Appointment will appear here -->
+            <div id="myAppointment" class="details-box">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        const data = JSON.parse(
+            localStorage.getItem("smartServeAppointment")
+        );
+
+        const box = document.getElementById("myAppointment");
+
+
+        if (data) {
+
+            box.innerHTML = `
+
+                <h3>Appointment Details</h3>
+
+                <p>
+                    <strong>Name:</strong>
+                    ${data.name}
+                </p>
+
+                <p>
+                    <strong>Mobile:</strong>
+                    ${data.mobile}
+                </p>
+
+                <p>
+                    <strong>Service:</strong>
+                    ${data.type}
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${data.date}
+                </p>
+
+                <p>
+                    <strong>Time:</strong>
+                    ${data.time}
+                </p>
+
+                <p>
+                    <strong>Details:</strong>
+                    ${data.details || "No details added"}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="confirmed">
+                        Confirmed ✓
+                    </span>
+                </p>
+
+                <button
+                    onclick="cancelAppointment()"
+                    class="main-btn">
+                    Cancel Appointment
+                </button>
+                <a href="index.html" class="back-home">← Back to Home</a>
+                
+
+            `;
+
+        } else {
+
+            box.innerHTML = `
+
+                <div class="no-appointment">
+
+                    <h2>No Appointment Found</h2>
+
+                    <p>
+                        You have not booked any appointment yet.
+                    </p>
+
+                    <a
+                        href="appointment.html"
+                        class="main-btn">
+                        Book Appointment
+                    </a>
+                    <a href="index.html"class="secondary-btn">
+                        back to home
+                        </a>
+
+                </div>
+
+            `;
+
+        }
+
+
+        function cancelAppointment() {
+
+            localStorage.removeItem(
+                "smartServeAppointment"
+            );
+
+            alert("Appointment cancelled successfully.");
+
+            window.location.href="my-appoinment.html";
+        }
+
+    </script>
+<script>
+function checkReminder() {
+    const appointment = JSON.parse(
+        localStorage.getItem("smartServeAppointment")
+    );
+
+    if (!appointment) return;
+
+    const appointmentTime = new Date(
+        appointment.date + "T" + appointment.time
+    );
+
+    const now = new Date();
+    const difference = appointmentTime - now;
+
+    const oneHour = 60 * 60 * 1000;
+
+    if (difference > 0 && difference <= oneHour) {
+        alert("⏰ Reminder: Your appointment is within 1 hour!");
+    }
+}
+
+setInterval(checkReminder, 60000);
+checkReminder();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Book Appointment - SmartServe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        Smart<span>Serve</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#services">
+            Services
+        </a>
+
+        <a href="index.html#about">
+            About
+        </a>
+
+        <a href="my-appointment.html">
+            My Appointment
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="booking-section">
+
+    <div class="booking-container">
+
+        <p class="small-title">
+            SMARTSERVE
+        </p>
+
+        <h1>
+            Book Your Appointment
+        </h1>
+
+        <p>
+            Enter your details to schedule your appointment.
+        </p>
+
+
+        <form onsubmit="bookAppointment(event)"><br></br>
+
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            ><br></br>
+
+
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter mobile number"
+                required
+            ><br></br>
+
+
+
+            <label>
+                Appointment Type
+            </label>
+
+            <select id="type" required>
+
+                <option value="">
+                    Select Service
+                </option>
+
+                <option>
+                    Doctor Appointment
+                </option>
+
+                <option>
+                    Salon Appointment
+                </option>
+
+                <option>
+                    Bank Appoinment 
+                </option>
+
+                <option>
+                    Aadhar Cendra
+                </option>
+
+                <option>
+                    Other Service
+                </option>
+
+            </select><br></br>
+
+
+
+            <label>
+                Appointment Date
+            </label>
+
+            <input
+                type="date"
+                id="date"
+                required
+            ><br></br>
+
+
+
+            <label>
+                Appointment Time
+            </label>
+
+            <input
+                type="time"
+                id="time"
+                required
+            ><br></br>
+
+
+
+            <label>
+                Additional Details
+            </label>
+
+            <textarea
+                id="details"
+                placeholder="Write your requirements..."
+            ></textarea><br></br>
+
+
+
+            <button
+                type="submit"
+                class="main-btn full"
+            >
+
+                Confirm Appointment
+
+            </button><br></br>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
